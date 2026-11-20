@@ -11,57 +11,95 @@
 
     <!-- ========== Navigation ========== -->
     <header class="navbar">
-        <div class="container nav-inner">
-            <a href="#top" class="logo"><span class="logo-mark">▲</span> APEX</a>
+        <div class="nav-inner">
+            <a href="#top" class="logo">
+                <span class="logo-main">APEX</span>
+                <span class="logo-small">Academic<br>Platform for<br>EXcellence</span>
+            </a>
             <nav class="nav-links">
+                <a href="#top">Home</a>
+                <a href="#categories">Categories</a>
                 <a href="#rounds">Rounds</a>
-                <a href="#subjects">Subjects</a>
                 <a href="#results">Winners</a>
-                <a href="#history">History</a>
                 <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
             </nav>
-            <a href="#add" class="btn btn-small">Register</a>
+            <div class="nav-buttons">
+                <a href="#add" class="btn btn-accent">Register</a>
+                <a href="#rules" class="btn btn-dark">Rules</a>
+            </div>
         </div>
     </header>
 
     <!-- ========== Hero ========== -->
     <section class="hero" id="top">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
+        <div class="hero-content">
+            <p class="hero-date" id="hero-date">Republic of Tajikistan</p>
+            <p class="hero-sub">National School Olympiad</p>
+            <h1 id="hero-title">APEX OLYMPIAD</h1>
+            <p class="hero-status" id="hero-status">Loading...</p>
+            <a href="#results" class="btn btn-accent btn-big">WINNER LIST</a>
+        </div>
+    </section>
 
-        <div class="container hero-inner">
-            <p class="hero-tag" id="hero-tag">Loading current olympiad...</p>
-            <h1>National School<br><span class="gradient-text">Olympiad of Tajikistan</span></h1>
-            <p class="hero-text">
-                Four rounds. Anonymous scoring. Fair appeals. One platform for every student,
-                school and organizer, from the school round to the republican final.
-            </p>
-            <div class="hero-buttons">
-                <a href="#results" class="btn">🏆 Winner List</a>
-                <a href="#add" class="btn btn-ghost">Register a Student</a>
-            </div>
-
-            <!-- Numbers loaded from the API -->
-            <div class="stats">
-                <div class="stat"><b id="stat-olympiads">-</b><span>Olympiads</span></div>
-                <div class="stat"><b id="stat-schools">-</b><span>Schools</span></div>
-                <div class="stat"><b id="stat-students">-</b><span>Students</span></div>
-                <div class="stat"><b id="stat-subjects">-</b><span>Subjects</span></div>
-            </div>
+    <!-- ========== Numbers ========== -->
+    <section class="stats-bar">
+        <div class="container stats">
+            <div class="stat"><b id="stat-olympiads">-</b><span>Olympiads</span></div>
+            <div class="stat"><b id="stat-schools">-</b><span>Schools</span></div>
+            <div class="stat"><b id="stat-students">-</b><span>Students</span></div>
+            <div class="stat"><b id="stat-subjects">-</b><span>Subjects</span></div>
         </div>
     </section>
 
     <main>
 
-        <!-- ========== Rounds (program schedule) ========== -->
+        <!-- ========== About / how it works ========== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="title">How APEX works</h2>
+                <p class="subtitle">From school registration to the national final, in one platform.</p>
+
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <h3>Register</h3>
+                        <p>Schools register up to 3 students per subject, grades 5 to 11.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <h3>Anonymous code</h3>
+                        <p>Every participant gets a code like MATH-2026-0013. The jury never sees names.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <h3>Four rounds</h3>
+                        <p>Written work (60) + test (40). Students who reach the pass mark advance.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">4</span>
+                        <h3>Appeals & places</h3>
+                        <p>Appeals within 24 hours. Places are given by the percentage of points.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== Categories (subjects with pictures) ========== -->
+        <section id="categories" class="section section-alt">
+            <div class="container">
+                <h2 class="title">Categories</h2>
+                <p class="subtitle">Subjects available for participation in the olympiad.</p>
+
+                <div id="subjects-list" class="categories"></div>
+            </div>
+        </section>
+
+        <!-- ========== Rounds ========== -->
         <section id="rounds" class="section">
             <div class="container">
-                <p class="eyebrow">Program</p>
-                <h2>Four rounds to the final</h2>
-                <p class="section-text">
-                    Each round has written work (up to 60 points) and a test (up to 40 points).
-                    Students who reach the pass mark move on.
-                </p>
+                <h2 class="title">Olympiad rounds</h2>
+                <p class="subtitle">Four rounds every school year, according to the official regulations.</p>
 
                 <div class="rounds">
                     <div class="round-card" data-round="1">
@@ -92,29 +130,17 @@
             </div>
         </section>
 
-        <!-- ========== Subjects (categories) ========== -->
-        <section id="subjects" class="section section-alt">
+        <!-- ========== Winners ========== -->
+        <section id="results" class="section section-alt">
             <div class="container">
-                <p class="eyebrow">Categories</p>
-                <h2>Olympiad subjects</h2>
-                <p class="section-text">Students can compete in up to two subjects per olympiad.</p>
-
-                <div id="subjects-list" class="subjects"></div>
-            </div>
-        </section>
-
-        <!-- ========== Winners (results) ========== -->
-        <section id="results" class="section">
-            <div class="container">
-                <p class="eyebrow">Winners</p>
-                <h2>Olympiad results</h2>
-                <p class="section-text">Places are given by the percentage of points in the republican round.</p>
+                <h2 class="title">Winners</h2>
+                <p class="subtitle">Final results of the republican round.</p>
 
                 <div class="controls">
                     <select id="olympiad-select">
                         <option value="">Loading olympiads...</option>
                     </select>
-                    <button id="results-btn" class="btn">Show Results</button>
+                    <button id="results-btn" class="btn btn-accent">Show Results</button>
                 </div>
 
                 <p id="results-status" class="status"></p>
@@ -123,17 +149,16 @@
         </section>
 
         <!-- ========== Student history ========== -->
-        <section id="history" class="section section-alt">
+        <section id="history" class="section">
             <div class="container">
-                <p class="eyebrow">Progress</p>
-                <h2>Student history</h2>
-                <p class="section-text">Every olympiad, round and score of a student, across all years.</p>
+                <h2 class="title">Student history</h2>
+                <p class="subtitle">Every olympiad, round and score of a student, across all years.</p>
 
                 <div class="controls">
                     <select id="student-select">
                         <option value="">Loading students...</option>
                     </select>
-                    <button id="history-btn" class="btn">Show History</button>
+                    <button id="history-btn" class="btn btn-accent">Show History</button>
                 </div>
 
                 <p id="history-status" class="status"></p>
@@ -141,14 +166,32 @@
             </div>
         </section>
 
+        <!-- ========== Rules ========== -->
+        <section id="rules" class="section section-alt">
+            <div class="container">
+                <h2 class="title">Rules</h2>
+                <p class="subtitle">Main rules from the official olympiad regulations.</p>
+
+                <div class="rules">
+                    <div class="rule"><b>5-11</b><span>Grades that can take part</span></div>
+                    <div class="rule"><b>3</b><span>Students per school in one subject</span></div>
+                    <div class="rule"><b>2</b><span>Subjects per student</span></div>
+                    <div class="rule"><b>60 + 40</b><span>Written work + test points</span></div>
+                    <div class="rule"><b>50% / 60%</b><span>Pass mark: general / new-type schools</span></div>
+                    <div class="rule"><b>4 + 4</b><span>Students per subject in the final</span></div>
+                    <div class="rule"><b>24 h</b><span>Time to submit an appeal</span></div>
+                    <div class="rule"><b>&gt; 40</b><span>Points needed to appeal</span></div>
+                </div>
+            </div>
+        </section>
+
         <!-- ========== Register a student ========== -->
         <section id="add" class="section">
             <div class="container narrow">
-                <p class="eyebrow">Registration</p>
-                <h2>Add a student</h2>
-                <p class="section-text">Students from grade 5 to 11 can take part.</p>
+                <h2 class="title">Register a student</h2>
+                <p class="subtitle">Add a new student to the platform.</p>
 
-                <form id="student-form" class="form glass">
+                <form id="student-form" class="form">
                     <label>
                         First name
                         <input id="first-name" type="text" placeholder="e.g. Farrukh" required>
@@ -165,7 +208,7 @@
                         School
                         <select id="school-select" required></select>
                     </label>
-                    <button type="submit" class="btn btn-wide">Add Student</button>
+                    <button type="submit" class="btn btn-accent btn-wide">Add Student</button>
                     <p id="form-status" class="status"></p>
                 </form>
             </div>
@@ -174,8 +217,8 @@
         <!-- ========== FAQ ========== -->
         <section id="faq" class="section section-alt">
             <div class="container narrow">
-                <p class="eyebrow">FAQ</p>
-                <h2>Frequently asked questions</h2>
+                <h2 class="title">FAQ</h2>
+                <p class="subtitle">Frequently asked questions.</p>
 
                 <div class="faq">
                     <details>
@@ -185,8 +228,8 @@
                     </details>
                     <details>
                         <summary>How is scoring kept fair?</summary>
-                        <p>Every participant gets an anonymous code (for example MATH-2026-0013).
-                           The jury sees only the code, never the student's name.</p>
+                        <p>Every participant gets an anonymous code. The jury sees only the code, never the
+                           student's name or school.</p>
                     </details>
                     <details>
                         <summary>How do I advance to the next round?</summary>
@@ -203,32 +246,37 @@
                         <p>90-100 points: 1st place, 75-89: 2nd place, from the pass mark: 3rd place.
                            Other finalists receive a Certificate of Honor.</p>
                     </details>
-                    <details>
-                        <summary>What happens if a student breaks the rules?</summary>
-                        <p>The student is disqualified and their points are cancelled.</p>
-                    </details>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- ========== Footer ========== -->
-    <footer class="footer">
+    <!-- ========== Footer / contact ========== -->
+    <footer class="footer" id="contact">
         <div class="container footer-inner">
             <div>
-                <a href="#top" class="logo"><span class="logo-mark">▲</span> APEX</a>
-                <p class="footer-text">Academic Platform for EXcellence</p>
+                <a href="#top" class="logo">
+                    <span class="logo-main">APEX</span>
+                    <span class="logo-small">Academic<br>Platform for<br>EXcellence</span>
+                </a>
+                <p class="footer-text">National School Olympiad platform of Tajikistan.</p>
             </div>
-            <div class="footer-links">
-                <a href="#rounds">Rounds</a>
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <a href="#categories">Categories</a>
                 <a href="#results">Winners</a>
-                <a href="#faq">FAQ</a>
+                <a href="#rules">Rules</a>
                 <a href="/docs">API Docs</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <span>Dushanbe, Tajikistan</span>
+                <a href="https://github.com/amibsluv/apex">GitHub repository</a>
                 <a href="#top">Back to top ↑</a>
             </div>
         </div>
-        <p class="footer-small">Built with FastAPI, HTML, CSS and JavaScript</p>
+        <p class="footer-small">© APEX · Built with FastAPI, PostgreSQL, HTML, CSS and JavaScript</p>
     </footer>
 
     <script src="script.js"></script>

@@ -3,11 +3,11 @@ const API = "/api";
 
 const MEDALS = { 1: "🥇", 2: "🥈", 3: "🥉" };
 
-// Icon and short text for each subject card
+// Picture and short text for each subject card
 const SUBJECT_INFO = {
-    "Mathematics": { icon: "∑", text: "Algebra, geometry, number theory and logic problems." },
-    "Physics": { icon: "⚛", text: "Mechanics, electricity, optics and experiments." },
-    "Informatics": { icon: "&lt;/&gt;", text: "Algorithms and programming problems." },
+    "Mathematics": { image: "img/mathematics.svg", text: "Algebra, geometry, number theory and logic problems." },
+    "Physics": { image: "img/physics.svg", text: "Mechanics, electricity, optics and experimental tasks." },
+    "Informatics": { image: "img/informatics.svg", text: "Algorithms, data structures and programming problems." },
 };
 
 
@@ -55,14 +55,14 @@ async function loadStats() {
 
         showCurrentOlympiad(olympiads);
     } catch (error) {
-        document.getElementById("hero-tag").textContent = "Server is not available";
+        document.getElementById("hero-status").textContent = "Server is not available";
     }
 }
 
 function showCurrentOlympiad(olympiads) {
-    const tag = document.getElementById("hero-tag");
+    const status = document.getElementById("hero-status");
     if (olympiads.length === 0) {
-        tag.textContent = "No olympiads yet";
+        status.textContent = "No olympiads yet";
         return;
     }
 
@@ -74,17 +74,20 @@ function showCurrentOlympiad(olympiads) {
         }
     }
 
+    document.getElementById("hero-date").textContent = "Republic of Tajikistan, " + latest.year;
+    document.getElementById("hero-title").textContent = "APEX OLYMPIAD " + latest.year;
+
     if (latest.status === "registration") {
-        tag.textContent = "● " + latest.year + " Olympiad · Registration is open";
+        status.textContent = "● Registration is open";
     } else if (latest.status === "ongoing") {
-        tag.textContent = "● " + latest.year + " Olympiad · " + latest.current_round_name + " round in progress";
+        status.textContent = "● " + latest.current_round_name + " round in progress";
         // highlight the current round card
         const card = document.querySelector('.round-card[data-round="' + latest.current_round + '"]');
         if (card) {
             card.classList.add("active");
         }
     } else {
-        tag.textContent = "● " + latest.year + " Olympiad · Completed";
+        status.textContent = "● Completed. See the winners below";
     }
 }
 
@@ -98,14 +101,17 @@ async function loadSubjects() {
 
         list.innerHTML = "";
         for (const subject of subjects) {
-            const info = SUBJECT_INFO[subject.name] || { icon: "★", text: "Olympiad subject." };
+            const info = SUBJECT_INFO[subject.name] || { image: "img/subject.svg", text: "Olympiad subject." };
 
             const card = document.createElement("div");
-            card.className = "subject-card";
+            card.className = "category";
             card.innerHTML = `
-                <div class="subject-icon">${info.icon}</div>
-                <h3>${subject.name}</h3>
-                <p>${info.text}</p>
+                <div class="category-img">
+                    <img src="${info.image}" alt="${subject.name}">
+                    <h3>${subject.name}</h3>
+                </div>
+                <p class="category-info">${info.text}</p>
+                <a href="#rules" class="learn-more">Learn more →</a>
             `;
             list.appendChild(card);
         }
